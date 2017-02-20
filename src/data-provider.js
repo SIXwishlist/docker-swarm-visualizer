@@ -70,7 +70,7 @@ let physicalStructProvider = ([initialNodes, initialContainers]) => {
     var node = _.find(cluster.children,{ ID:NodeID });
     if(!node) return;
     var dt = new Date(cloned.UpdatedAt);
-    var color =  stringToColor(cloned.ServiceID);
+    var color =  stringToColor(cloned.Spec.ContainerSpec.Image);
     let serviceName = cloned.ServiceName;
     let imageNameRegex = /([^/]+?)(\:([^/]+))?$/;
     let imageNameMatches = imageNameRegex.exec(cloned.Spec.ContainerSpec.Image);
