@@ -78,15 +78,11 @@ let physicalStructProvider = ([initialNodes, initialContainers]) => {
     let dateStamp = dt.getDate()+"/"+(dt.getMonth()+1)+" "+ dt.getHours()+":"+dt.getMinutes();
     let startState=cloned.Status.State;
 
-    let imageTag ="<div style='height: 100%; padding: 5px 5px 5px 5px; border: 2px solid "+color+"'>"+
-        "<span class='contname' style='color: white; font-weight: bold;font-size: 12px'>"+ serviceName +"</span>"+
-        "<br/> image : " + imageNameMatches[0] +
-        "<br/> tag : " + (tagName ? tagName : "latest") +
-        "<br/>" + (cloned.Spec.ContainerSpec.Args?" cmd : "+cloned.Spec.ContainerSpec.Args+"<br/>" : "" ) +
-        " updated : " + dateStamp +
-        "<br/>"+ cloned.Status.ContainerStatus.ContainerID +
-        "<br/> state : "+startState +
-        "</div>";
+    let imageTag = "<div style='height: 100%; padding: 5px 5px 5px 5px; border: 2px solid " + color + "'>" +
+      "<span class='contname' style='color: white; font-weight: bold;font-size: 12px'>" + serviceName + "</span>" +
+      "<br/>" + imageNameMatches[0].split('@')[0] +
+      "<br/>" + startState +
+      "</div>";
 
     if (node.Spec.Role=='manager')  {
       let containerlink = window.location.href+  "apis/containers/"+cloned.Status.ContainerStatus.ContainerID + "/json";
