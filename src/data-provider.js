@@ -70,16 +70,13 @@ let physicalStructProvider = ([initialNodes, initialContainers]) => {
     var node = _.find(cluster.children,{ ID:NodeID });
     if(!node) return;
     var dt = new Date(cloned.UpdatedAt);
-    var color =  stringToColor(cloned.Spec.ContainerSpec.Image);
+    var color =  stringToColor(cloned.Spec.ContainerSpec.Image.split(':')[0]);
     let serviceName = cloned.ServiceName;
     let imageNameRegex = /([^/]+?)(\:([^/]+))?$/;
     let imageNameMatches = imageNameRegex.exec(cloned.Spec.ContainerSpec.Image);
     let tagName = imageNameMatches[3];
     let dateStamp = dt.getDate()+"/"+(dt.getMonth()+1)+" "+ dt.getHours()+":"+dt.getMinutes();
     let startState=cloned.Status.State;
-
-
-
 
     let imageTag ="<div style='height: 100%; padding: 5px 5px 5px 5px; border: 2px solid "+color+"'>"+
         "<span class='contname' style='color: white; font-weight: bold;font-size: 12px'>"+ serviceName +"</span>"+
