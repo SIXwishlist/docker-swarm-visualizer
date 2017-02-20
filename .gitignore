@@ -40,5 +40,6 @@ jspm_packages
 *.sh
 *.iml
 
-!build-aarch64.sh
 !build.sh
+!build-aarch64.sh
+!build-arm.sh
