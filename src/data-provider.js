@@ -74,7 +74,7 @@ let physicalStructProvider = ([initialNodes, initialContainers]) => {
     let serviceName = cloned.ServiceName;
     let imageNameRegex = /([^/]+?)(\:([^/]+))?$/;
     let imageNameMatches = imageNameRegex.exec(cloned.Spec.ContainerSpec.Image);
-    let tagName = imageNameMatches[3].split("@").pop();
+    let tagName = imageNameMatches[3].split("@")[0];
     let dateStamp = dt.getDate()+"/"+(dt.getMonth()+1)+" "+ dt.getHours()+":"+dt.getMinutes();
     let startState=cloned.Status.State;
 
