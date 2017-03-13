@@ -17,6 +17,11 @@ if [ $ARCH == "amd64" ]; then
     sleep 15
     echo "Try again"
   done
+  until docker run --rm stefanscherer/winspector sealsystems/visualizer:windows-amd64-$TRAVIS_TAG
+  do
+    sleep 15
+    echo "Try again"
+  done
   set -e
 
   echo "Downloading manifest-tool"
@@ -27,13 +32,13 @@ if [ $ARCH == "amd64" ]; then
 
   echo "Pushing manifest sealsystems/visualizer:$TRAVIS_TAG"
   ./manifest-tool push from-args \
-    --platforms linux/amd64,linux/arm,linux/arm64 \
+    --platforms linux/amd64,linux/arm,linux/arm64,windows/amd64 \
     --template sealsystems/visualizer:OS-ARCH-$TRAVIS_TAG \
     --target sealsystems/visualizer:$TRAVIS_TAG
 
   echo "Pushing manifest sealsystems/visualizer:latest"
   ./manifest-tool push from-args \
-    --platforms linux/amd64,linux/arm,linux/arm64 \
+    --platforms linux/amd64,linux/arm,linux/arm64,windows/amd64 \
     --template sealsystems/visualizer:OS-ARCH-$TRAVIS_TAG \
     --target sealsystems/visualizer:latest
 fi
