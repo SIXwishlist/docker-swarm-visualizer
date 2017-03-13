@@ -1,4 +1,5 @@
 FROM aarch64/node:4.6.0-slim
+COPY qemu-aarch64-static /usr/bin/qemu-aarch64-static
 
 WORKDIR /app
 
