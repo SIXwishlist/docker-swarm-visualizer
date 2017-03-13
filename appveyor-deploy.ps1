@@ -8,6 +8,6 @@ if (! (Test-Path Env:\APPVEYOR_REPO_TAG_NAME)) {
 Write-Host Starting deploy
 docker login -u="$env:DOCKER_USER" -p="$env:DOCKER_PASS"
 
-docker tag visualizer sealsystems/visualizer:windows-$env:APPVEYOR_REPO_TAG_NAME
+docker tag visualizer sealsystems/visualizer:windows-amd64-$env:APPVEYOR_REPO_TAG_NAME
 
-docker push sealsystems/visualizer:windows-$env:APPVEYOR_REPO_TAG_NAME
+docker push sealsystems/visualizer:windows-amd64-$env:APPVEYOR_REPO_TAG_NAME
