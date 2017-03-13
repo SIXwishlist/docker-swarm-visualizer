@@ -74,7 +74,7 @@ let physicalStructProvider = ([initialNodes, initialContainers]) => {
     let serviceName = cloned.ServiceName;
     let imageNameRegex = /([^/]+?)(\:([^/]+))?$/;
     let imageNameMatches = imageNameRegex.exec(cloned.Spec.ContainerSpec.Image);
-    let tagName = imageNameMatches[3];
+    let tagName = imageNameMatches[3].split("@").pop();
     let dateStamp = dt.getDate()+"/"+(dt.getMonth()+1)+" "+ dt.getHours()+":"+dt.getMinutes();
     let startState=cloned.Status.State;
 
@@ -168,6 +168,8 @@ updateNodes = (nodes) => {
           name = node.Description.Hostname;
           if(name.length>0) {
             currentnode.Description.Hostname = name ;
+            name = name.replace(/^first/, '');
+            name = name.replace(/^second/, '');
             currentnode.name = name+" <br/> "+ node.Spec.Role+
             " <br/>"+(currentnode.Description.Resources.MemoryBytes/1024/1024/1024).toFixed(0)+"G RAM <br/>";
             for (var key in node.Spec.Labels) {
