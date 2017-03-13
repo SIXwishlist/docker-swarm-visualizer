@@ -1,7 +1,9 @@
-FROM hypriot/rpi-node:6.10.0-alpine
+FROM node:6.10.0-alpine
 
-WORKDIR /code
-COPY tmp/ /code
+WORKDIR /app
+COPY tmp /app
+
+RUN npm install --production
 
 # Number of milliseconds between polling requests. Default is 1000.
 ENV MS 1000

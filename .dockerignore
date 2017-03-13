@@ -3,3 +3,6 @@ node_modules/caniuse-db
 *.sh
 .idea
 *.iml
+appveyor*
+travis*
+.travis.yml
