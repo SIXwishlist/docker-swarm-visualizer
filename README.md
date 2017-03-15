@@ -2,6 +2,7 @@
 # Docker Swarm Visualizer
 [![Build Status](https://travis-ci.org/sealsystems/docker-swarm-visualizer.svg?branch=master)](https://travis-ci.org/sealsystems/docker-swarm-visualizer)
 [![Build status](https://ci.appveyor.com/api/projects/status/v6gy99vwj0uf9vmc?svg=true)](https://ci.appveyor.com/project/StefanScherer/docker-swarm-visualizer-y1rq7)
+[![This image on DockerHub](https://img.shields.io/docker/pulls/sealsystems/visualizer.svg)](https://hub.docker.com/r/sealsystems/visualizer/)
 
 ![Sample image of  nodes with data](./nodes.png)
 
