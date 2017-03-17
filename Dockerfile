@@ -1,4 +1,3 @@
-#Latest version of node tested on.
 FROM node:4.1.2-slim
 
 WORKDIR /app
@@ -11,7 +10,6 @@ RUN npm install --unsafe-perm=true
 
 # Add the rest of the sources
 ADD . /app
-
 
 # Build the app
 RUN npm run dist
