@@ -1,11 +1,11 @@
 #!/bin/bash
 set -e
 
-if [ $ARCH != "amd64" ]; then
+if [ "$ARCH" != "amd64" ]; then
   # prepare qemu
   docker run --rm --privileged multiarch/qemu-user-static:register --reset
 
-  if [ $ARCH == "arm64" ]; then
+  if [ "$ARCH" == "arm64" ]; then
     # prepare qemu binary
     docker create --name register hypriot/qemu-register
     docker cp register:qemu-aarch64 qemu-aarch64-static
@@ -17,9 +17,10 @@ if [ -d tmp ]; then
   rm -rf tmp
 fi
 
-# build image
+# prepare build on Intel
 docker build -t build -f Dockerfile.amd64-build .
 docker create --name build build
 docker cp build:/app/ tmp/
 rm -rf tmp/node_modules
-docker build -t visualizer -f Dockerfile.$ARCH .
+# build final image
+docker build -t visualizer -f "Dockerfile.$ARCH" .

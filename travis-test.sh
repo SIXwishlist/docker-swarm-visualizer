@@ -2,9 +2,9 @@
 set -e
 
 # test version
-if [ -n $TRAVIS_TAG ]; then
-  packageVersion=$(cat package.json | jq -j .version)
-  if [ ! $TRAVIS_TAG == $packageVersion ]; then
+if [ -n "$TRAVIS_TAG" ]; then
+  packageVersion=$(jq -j .version < package.json)
+  if [ ! "$TRAVIS_TAG" == "$packageVersion" ]; then
     echo "Travis tag $TRAVIS_TAG and package.json version $packageVersion differ!"
     exit 1
   fi
