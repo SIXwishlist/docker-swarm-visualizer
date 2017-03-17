@@ -1,5 +1,5 @@
 $ErrorActionPreference = 'Stop';
-$files = ""
+
 Write-Host Starting build
 
 Write-Host Updating base images
