@@ -6,8 +6,8 @@ services:
 env:
   matrix:
     - ARCH=arm
-    - ARCH=amd64
     - ARCH=arm64
+    - ARCH=amd64
 
 script:
   - ./travis-build.sh
