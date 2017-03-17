@@ -1,4 +1,4 @@
-FROM stefanscherer/node-windows:6.9.2-nano
+FROM node:6.9.2-nanoserver
 
 WORKDIR /app
 
@@ -14,8 +14,8 @@ ADD . /app
 # Build the app
 RUN npm run dist
 
-# Number of milliseconds between polling requests. Default is 200.
-ENV MS 200
+# Number of milliseconds between polling requests. Default is 1000.
+ENV MS 1000
 
 EXPOSE 8080
 
