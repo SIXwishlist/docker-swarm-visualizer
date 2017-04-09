@@ -3,6 +3,8 @@ COPY qemu-aarch64-static /usr/bin/qemu-aarch64-static
 WORKDIR /code
 COPY tmp/ /code
 
+RUN npm install --production
+
 # Number of milliseconds between polling requests. Default is 1000.
 ENV MS 1000
 
